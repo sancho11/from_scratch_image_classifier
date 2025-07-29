@@ -117,6 +117,9 @@ source .venv/bin/activate  # On Windows, use: .venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
+Get the dataset: `Instructions at get_dataset.md`
+
+
 To run the project:
 
 ```bash
@@ -129,9 +132,8 @@ python evaluate.py path/to/model
 #For running classification on a single image.
 python infierence.py path/to/model path/to/image
 ```
----
 
-## Training
+### Training
 To get good inference results I recomend to follow this training sequence:
 
 ```bash
@@ -147,14 +149,14 @@ python train.py --epochs_count 200 --use_scheduler --half_precision --data_augme
 #Lets do a final train without data augmentation and with complete precision
 python train.py --epochs_count 60 --use_scheduler --init_learning_rate 1e-4 --resume Logs_Checkpoints/Model_checkpoints/version_3/last_model.pt
 ```
-## Evaluating
+### Evaluating
 Generate confusion matrix and do inference over whole dataset
 ``` bash
 python evaluate.py /path/to/your/checkpoint.pt --output_dir ./eval_results --batch_size 16
 ```
 
-## Inferring
-Do an inference with a single image using a trained model
+### Inferring
+Do an inference on a single image using a trained model
 ``` bash
 python infer.py --model_path /path/to/your/checkpoint.pt --image_path /path/to/image
 ```
